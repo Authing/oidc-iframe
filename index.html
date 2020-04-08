@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authing in iframe</title>
+  </head>
+  <body>
+    <h1>我的应用</h1>
+    <div id="hint">请登录：</div>
+    <input type="button" value="登出" id="logout" style="display: none;"/>
+    <div id="user-info-hint" style="display: none;">用户信息：</div>
+    <iframe
+      id="authing-iframe"
+      src="https://first-oidc-app.authing.cn/oauth/oidc/auth?client_id=5cded9bf4efab36f02fa666a&redirect_uri=http://localhost:3000/sso/redirect&scope=openid profile email phone offline_access&response_type=code&prompt=consent&state=235345"
+      frameborder="0"
+      height="600"
+    ></iframe>
+    <pre id="user-info"></pre>
+    <script>
+      window.onmessage = function (ev) {
+        if (ev.data.isAuthing) {
+          console.log(ev.data.data);
+          document.getElementById('authing-iframe').remove();
+          document.getElementById('user-info').innerText = JSON.stringify(ev.data.data, null, 4);
+          document.getElementById('hint').innerText = "请登出"
+          document.getElementById('user-info-hint').style.display = "block"
+          document.getElementById('logout').style.display = "inline"
+        }
+      };
+      document.getElementById('logout').addEventListener('click', function () {
+        location.href = 'https://first-oidc-app.authing.cn/login/profile/logout?app_id=5cded9bf4efab36f02fa666a&redirect_uri=http://localhost:8080/index.html';
+      });
+    </script>
+  </body>
+</html>
