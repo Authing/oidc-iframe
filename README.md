@@ -31,13 +31,13 @@ $ http-server .
 在浏览器访问 [http://localhost:8080/index.html](http://localhost:8080/index.html)。
 
 Authing OIDC 登录页已经嵌入到了我们自己的应用，现在我们输入账号密码进行登录。
-![](https://cdn.authing.cn/docs/20200408211216.png)
+![](/img/20200408211216.png)
 
 成功获得了用户信息。我们刷新页面，依然会显示登录信息，因为此时已经是登录状态。
-![](https://cdn.authing.cn/docs/20200408211433.png)
+![](/img/20200408211433.png)
 
 接下来点击「登出」按钮，退出登录。
-![](https://cdn.authing.cn/docs/20200408211910.png)
+![](/img/20200408211910.png)
 
 之后我们又回到了最一开始的登录页面。
-![](https://cdn.authing.cn/docs/20200408211216.png)
+![](/img/20200408211216.png)
